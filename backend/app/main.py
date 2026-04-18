@@ -8,7 +8,7 @@ app = FastAPI(title="Degree Choice Assistant API")
 allowed_origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://degreechoiceassistant.onrender.com/"
+    "https://degree-choice-assistant.vercel.app",
 ]
 
 app.add_middleware(
