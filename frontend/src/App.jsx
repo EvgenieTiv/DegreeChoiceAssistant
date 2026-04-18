@@ -230,13 +230,15 @@ export default function App() {
         preferences: preferencesForm,
       };
 
-      const res = await fetch("http://127.0.0.1:8000/analyze", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+  fetch(`${API_BASE_URL}/analyze`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
 
       if (!res.ok) {
         const errorText = await res.text();
