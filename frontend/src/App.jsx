@@ -232,21 +232,28 @@ export default function App() {
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-  fetch(`${API_BASE_URL}/analyze`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  const handleSubmit = async () => {
+    try {
+      setLoading(true);
+      setError("");
+
+      const payload = data;
+
+      const res = await fetch(`${API_BASE_URL}/analyze`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
       if (!res.ok) {
         const errorText = await res.text();
         throw new Error(errorText || "Failed to submit questionnaire.");
       }
 
-      const data = await res.json();
-      setResponseData(data);
+      const result = await res.json();
+      setResponseData(result);
     } catch (err) {
       setError(err.message || "Something went wrong.");
     } finally {
