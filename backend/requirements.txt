@@ -4,3 +4,4 @@ gunicorn
 dotenv
 snapshot
 pandas
+openai
