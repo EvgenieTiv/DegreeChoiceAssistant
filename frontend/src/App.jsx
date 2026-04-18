@@ -218,20 +218,6 @@ export default function App() {
     setPreferencesForm((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    setResponseData(null);
-
-    try {
-      const payload = {
-        study: studyForm,
-        preferences: preferencesForm,
-      };
-
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
   const handleSubmit = async () => {
     try {
       setLoading(true);
